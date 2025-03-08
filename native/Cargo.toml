@@ -13,21 +13,20 @@ crate-type = ["cdylib"]
 neon-build = "0.10.1"
 
 [dependencies]
-tokio = { version = "1.21.2", features = ["full"] }
-log = { version = "^0.4.5", features = ["std"] }
-env_logger = "0.10.0"
-simple-logging = "2.0.1"
-futures = "0.3.25"
-librespot = { git = "https://github.com/librespot-org/librespot", branch = "dev", features = ["default"]}
+tokio = { version = "1.44.0", features = ["full"] }
+log = { version = "0.4.26", features = ["std"] }
+env_logger = { git="https://github.com/czlabinger/env_logger", tag="11.7" }
+simple-logging = "2.0.2"
+futures = "0.3.31"
+librespot = "0.6.0"
 hex = "0.4.3"
-sha1 = "0.10.5"
-futures-util = { version = "0.3.25", default_features = false }
-protobuf = { version = "3.0.0", features = ["bytes"]}
-reqwest = "0.11.13"
-symphonia = { version="0.5.2", features=["default", "mpa"] }
+sha1 = "0.10.6"
+futures-util = { version = "0.3.31", default_features = false }
+protobuf = { version = "3.7.1", features = ["bytes"]}
+reqwest = "0.12.12"
+symphonia = { version="0.5.4", features=["default", "mpa"] }
 
 [dependencies.neon]
 version = "0.10.1"
 default-features = false
 features = ["napi-6", "promise-api", "channel-api"]
-

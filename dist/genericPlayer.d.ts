@@ -1,4 +1,3 @@
-/// <reference types="node" />
 import EventEmitter from "events";
 import { TokenHandler } from "./tokenHandler";
 import { PositionHolder } from "./positionHolder";
@@ -8,7 +7,7 @@ export declare function safe_execution(_: unknown, propertyKey: string, descript
 export declare abstract class GenericPlayer {
     protected tokenHandler: TokenHandler;
     protected _positionHolder: PositionHolder;
-    eventEmitter: EventEmitter;
+    eventEmitter: EventEmitter<[never]>;
     protected playerInstance: PlayerNativeObject | undefined;
     protected _volume: number;
     protected device_id: string;
@@ -19,11 +18,11 @@ export declare abstract class GenericPlayer {
     constructor(config: ConstructorConfig, playerConstructMethod?: "create_player" | "create_player_spirc");
     private player_event_callback;
     private registerListeners;
-    on: <T extends PlayerEventTypes>(event: T, callback: (event: PlayerEvent<T>) => void) => EventEmitter;
-    off: <T extends PlayerEventTypes>(event: T, callback: (event: PlayerEvent<T>) => void) => EventEmitter;
-    addListener<T extends PlayerEventTypes>(event: T, callback: (event: PlayerEvent<T>) => void): EventEmitter;
-    removeListener<T extends PlayerEventTypes>(event: T, callback: (event: PlayerEvent<T>) => void): EventEmitter;
-    once<T extends PlayerEventTypes>(event: T, callback: (event: PlayerEvent<T>) => void): EventEmitter;
+    on: <T extends PlayerEventTypes>(event: T, callback: (event: PlayerEvent<T>) => void) => EventEmitter<[never]>;
+    off: <T extends PlayerEventTypes>(event: T, callback: (event: PlayerEvent<T>) => void) => EventEmitter<[never]>;
+    addListener<T extends PlayerEventTypes>(event: T, callback: (event: PlayerEvent<T>) => void): EventEmitter<[never]>;
+    removeListener<T extends PlayerEventTypes>(event: T, callback: (event: PlayerEvent<T>) => void): EventEmitter<[never]>;
+    once<T extends PlayerEventTypes>(event: T, callback: (event: PlayerEvent<T>) => void): EventEmitter<[never]>;
     removeAllListeners(): void;
     getDeviceId(): string;
     protected validateUri(val: string): [string | undefined, string | undefined];

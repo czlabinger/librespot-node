@@ -327,7 +327,7 @@ pub fn get_credentials_from_obj(
 ) -> Result<Credentials, Throw> {
     let auth_config = obj.get::<JsObject, _, _>(cx, "auth")?;
     Ok(Credentials {
-        username: auth_config.get::<JsString, _, _>(cx, "username")?.value(cx),
+        username: Some(auth_config.get::<JsString, _, _>(cx, "username")?.value(cx)),
         auth_type: get_auth_type(auth_config.get::<JsString, _, _>(cx, "authType")?.value(cx)),
         auth_data: auth_config
             .get::<JsString, _, _>(cx, "password")?
@@ -411,6 +411,9 @@ pub fn get_connect_config_from_obj(
         ),
         has_volume_ctrl: connect_config
             .get::<JsBoolean, _, _>(cx, "hasVolumeControl")?
+            .value(cx),
+        is_group: connect_config
+            .get::<JsBoolean, _, _>(cx, "is_group")?
             .value(cx),
     })
 }
